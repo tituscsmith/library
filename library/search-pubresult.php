@@ -14,7 +14,9 @@
 
 	// write query for all books
 	//$sql = "SELECT publisher FROM books WHERE publisher LIKE '%color%'";
-		$sql = "SELECT books.title, books.ID FROM books INNER JOIN publisher ON books.publisherID = publisher.ID AND publisher.name LIKE '%$publisher%'";
+	$publisher = mysqli_real_escape_string($conn, $_POST['publisher']);
+
+	$sql = "SELECT books.title, books.ID FROM books WHERE books.publisherName LIKE '%$publisher%'";
 
 	// get the result set (set of rows)
 	$result = mysqli_query($conn, $sql);
@@ -22,14 +24,6 @@
 	// fetch the resulting rows as an array
 	$books = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-	  // //If no data, retrieve error message
-	  // if (empty($books) || empty($publisher)) {
-	  // 	$sql = "SELECT publisher, ingredients, id FROM books WHERE id = '-1'";
-	  // 	$result = mysqli_query($conn, $sql);
-	  // 	$books = mysqli_fetch_all($result, MYSQLI_ASSOC);
-	  // }
-
-	 // print_r($books);
 
 	// free the $result from memory (good practise)
 	mysqli_free_result($result);
@@ -45,7 +39,7 @@
 	
 	<?php include('templates/header.php'); ?>
 
-	<h4 class="center grey-text">Matching Books</h4>
+	<h4 class="center grey-text">Matching Books for: <?php echo htmlspecialchars($publisher); ?></h4>
 
 	<div class="container">
 		<div class="row">

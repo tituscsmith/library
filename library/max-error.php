@@ -7,6 +7,6 @@
 <html>
 	
 	<?php include('templates/header.php'); ?>
-	<h4 style="text-align:center">This page does not exist.</h4>
+	<h4 style="text-align:center">Woah There. That's a little too many books.</h4>
 
 </html>

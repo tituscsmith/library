@@ -1,5 +1,7 @@
 <?php 
-	$title = $ingredients = '';
+	$title = '';
+	$errors = array('title' => '');
+
 	include('config/db_connect.php');
 
 		// retrieve title
@@ -14,20 +16,16 @@
 
 	// write query for all books
 	//$sql = "SELECT title FROM books WHERE title LIKE '%color%'";
-		$sql = "SELECT title, ID FROM books WHERE title LIKE '%$title%'";
+
+	$title = mysqli_real_escape_string($conn, $_POST['title']);
+
+	$sql = "SELECT title, ID FROM books WHERE title LIKE '%$title%'";
 
 	// get the result set (set of rows)
 	$result = mysqli_query($conn, $sql);
 
 	// fetch the resulting rows as an array
 	$books = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-	  // //If no data, retrieve error message
-	  // if (empty($books) || empty($title)) {
-	  // 	$sql = "SELECT title, ingredients, id FROM books WHERE id = '-1'";
-	  // 	$result = mysqli_query($conn, $sql);
-	  // 	$books = mysqli_fetch_all($result, MYSQLI_ASSOC);
-	  // }
 
 	 // print_r($books);
 
@@ -45,7 +43,7 @@
 	
 	<?php include('templates/header.php'); ?>
 
-	<h4 class="center grey-text">Matching Books</h4>
+	<h4 class="center grey-text">Matching Books for: <?php echo htmlspecialchars($title); ?></h4>
 
 	<div class="container">
 		<div class="row">

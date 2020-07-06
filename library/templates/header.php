@@ -15,7 +15,7 @@
   		color: #cbb09c !important;
   	}
   	form{
-  		max-width: 400px;
+      max-width: 460px;
   		margin: 20px auto;
   		padding: 20px;
   	}
@@ -26,6 +26,9 @@
       display: block;
       position: relative;
       top: -30px;
+    }
+    .col{
+      height: 300px;
     }
     
 
@@ -73,8 +76,8 @@
                         <i class = "mdi-navigation-arrow-drop-down right"></i></a>
           <ul id = "dropdown-3" class = "dropdown-content">
              <li><a href = "add.php">Book</a></li>
-              <li><a href = "add-author.php">Author</a></li>
-              <li><a href = "add-publisher.php">Publisher</a></li>
+              <!-- <li><a href = "add-author.php">Author</a></li>
+              <li><a href = "add-publisher.php">Publisher</a></li> -->
           </ul>
           <!--   <li><a href="remove.php" class="btn brand">Remove a Book
               <i class = "mdi-navigation-arrow-drop-down right"></i></a>
